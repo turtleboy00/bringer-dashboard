@@ -1,0 +1,22 @@
+[
+  {
+    "model": "delivery.delivery",
+    "pk": 1,
+    "fields": {
+      "carrier_name": "ups",
+      "tracking_number": "1Z3826E96795494464",
+      "label": "",
+      "price": 45.3
+    }
+  },
+  {
+    "model": "delivery.delivery",
+    "pk": 2,
+    "fields": {
+      "carrier_name": "ebay",
+      "tracking_number": "1Z3826E96795334654",
+      "label": "",
+      "price": 264.12
+    }
+  }
+]

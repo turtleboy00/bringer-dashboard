@@ -1,0 +1,84 @@
+{
+	"ShipmentRequest":{
+		"Shipment":{
+			"Description":"Test Shipment",
+			"Shipper":{
+				"Name":"Name",
+				"AttentionName":"AttentionName",
+				"TaxIdentificationNumber":"TaxIdentificationNumber",
+				"Phone":{
+					"Number":"Number"
+				},
+				"ShipperNumber":"ShipperNumber",
+				"Address":{
+					"AddressLine":"AddressLine",
+					"City":"City",
+					"StateProvinceCode":"StateProvinceCode",
+					"PostalCode":"PostalCode",
+					"CountryCode":"CountryCode"
+				}
+			},
+			"ShipTo":{
+				"Name":"Name",
+				"AttentionName":"AttentionName",
+				"Phone":{
+					"Number":"Number"
+				},
+				"TaxIdentificationNumber":"TaxIdentificationNumber",
+				"Address":{
+					"AddressLine":"AddressLine",
+					"City":"City",
+					"StateProvinceCode":"StateProvinceCode",
+					"PostalCode":"PostalCode",
+					"CountryCode":"CountryCode"
+				}
+			},
+			"ShipFrom":{
+				"Name":"Name",
+				"AttentionName":"AttentionName",
+				"Phone":{
+					"Number":"Number"
+				},
+				"TaxIdentificationNumber":"TaxIdentificationNumber",
+				"Address":{
+					"AddressLine":"AddressLine",
+					"City":"City",
+					"StateProvinceCode":"StateProvinceCode",
+					"PostalCode":"PostalCode",
+					"CountryCode":"CountryCode"
+				}
+			},
+			"PaymentInformation":{
+				"ShipmentCharge":{
+					"Type":"01",
+					"BillShipper":{
+						"AccountNumber":"AccountNumber"
+					}
+				}
+			},
+			"Service":{
+				"Code":"08",
+				"Description":"Serivce Description"
+			},
+			"Package":{
+				"Packaging":{
+					"Code":"02",
+					"Description":"Package Description"
+				},
+                "PackageWeight": {
+                    "UnitOfMeasurement": {
+                        "Code": "LBS"
+                    },
+                    "Weight": "1"
+                }
+			}
+		},
+		"LabelSpecification":{
+			"LabelImageFormat":{
+				"Code":"PNG",
+				"Description":"LabelImageFormat Description"
+			},
+			"HTTPUserAgent":"Mozilla/4.5"
+		}
+	}
+}

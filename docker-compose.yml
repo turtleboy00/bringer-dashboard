@@ -1,0 +1,28 @@
+services:
+  backend:
+   build: ./backend
+   image: bringer_backend
+   container_name: bringer_be
+   networks: 
+     - backend
+   ports:
+    - 9030:8000
+   environment:
+           FE_PORT: 9040
+  frontend:
+   build: ./frontend
+   image: bringer_frontend
+   container_name: bringer_fe 
+   networks: 
+     - frontend
+     - backend
+   ports:
+    - 9040:3000
+   depends_on:
+     - backend
+   environment:
+           REACT_APP_BE_PORT: 9030
+  
+networks:
+  backend:
+  frontend:
