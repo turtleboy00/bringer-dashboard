@@ -10,10 +10,9 @@ const Dashboard = () => {
     document.title = "UPS: Dashboard";
 
     const getPackages = async () => {
-      const URL = process.env.REACT_APP_BE_URL;
       const PORT = process.env.REACT_APP_BE_PORT;
 
-      await fetch(`http://${URL}:${PORT}/delivery/`)
+      await fetch(`http://localhost:${PORT}/delivery/`)
         .then((res) => {
           if (res.status >= 400 && res.status < 600) {
             throw Error(res.statusText);

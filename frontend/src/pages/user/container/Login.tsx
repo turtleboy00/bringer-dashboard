@@ -10,7 +10,7 @@ const Login = () => {
     const passwordRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
-    const PORT = process.env.REACT_APP_BE_PORT
+    const PORT = process.env.REACT_APP_BE_PORT || 8000
 
     useEffect(() => {
         const token = localStorage.getItem('token')

@@ -29,10 +29,9 @@ const Register = () => {
     headers.append("Content-Type", "application/json");
 
     if (username && password) {
-      const URL = process.env.REACT_APP_BE_URL;
-      const PORT = process.env.REACT_APP_BE_PORT;
+      const PORT = process.env.REACT_APP_BE_PORT || 8000
 
-      await fetch(`http://${URL}:${PORT}/user/register/`, {
+      await fetch(`http://localhost:${PORT}/user/register/`, {
         headers,
         method: "POST",
         body: JSON.stringify({ username, password })

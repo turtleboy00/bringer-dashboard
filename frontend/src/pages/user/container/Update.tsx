@@ -27,8 +27,9 @@ const Update = () => {
 
         if (decodedToken) {
             const id = decodedToken["id"];
+            const PORT = process.env.REACT_APP_BE_PORT || 8000
 
-            fetch(`http://${process.env.REACT_APP_BE_URL}:5000/jwt/update-user`, {
+            fetch(`http://localhost:${PORT}/user/update/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

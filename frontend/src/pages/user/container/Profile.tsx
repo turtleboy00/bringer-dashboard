@@ -16,7 +16,7 @@ const Profile = () => {
   useEffect(() => {
     const checkLogin = async () => {
       const token = JSON.parse(localStorage.getItem("token"));
-      const PORT = process.env.REACT_APP_BE_PORT;
+      const PORT = process.env.REACT_APP_BE_PORT || 8000
 
       let headers = {
         "Content-Type": "application/json",
