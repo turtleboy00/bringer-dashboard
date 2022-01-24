@@ -13,7 +13,7 @@ const Dashboard = () => {
     document.title = "UPS: Dashboard";
 
     const getPackages = async () => {
-      const PORT = process.env.REACT_APP_BE_PORT;
+      const PORT = process.env.BE_PORT || 8000;
 
       await fetch(`http://localhost:${PORT}/delivery/ups/`)
         .then((res) => {

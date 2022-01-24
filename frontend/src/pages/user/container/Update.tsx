@@ -27,7 +27,7 @@ const Update = () => {
 
         if (decodedToken) {
             const id = decodedToken["id"];
-            const PORT = process.env.REACT_APP_BE_PORT || 8000
+            const PORT = process.env.BE_PORT || 8000
 
             fetch(`http://localhost:${PORT}/user/update/`, {
                 method: "PUT",

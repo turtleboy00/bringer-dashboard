@@ -48,8 +48,7 @@ const Label = () => {
     },
   });
 
-  const URL = process.env.REACT_APP_BE_URL;
-  const PORT = process.env.REACT_APP_BE_PORT;
+  const PORT = process.env.BE_PORT || 8000;
 
   useEffect(() => {
     document.title = "UPS: Label";
@@ -68,7 +67,7 @@ const Label = () => {
     setValue("reciever.TaxIdentificationNumber", "78408010999");
     setValue("shipper.ShipperNumber", "3826E9");
 
-    await fetch(`http://${URL}:${PORT}/delivery/ups/create-label/`, {
+    await fetch(`http://localhost:${PORT}/delivery/ups/create-label/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

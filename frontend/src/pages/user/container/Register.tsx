@@ -29,7 +29,7 @@ const Register = () => {
     headers.append("Content-Type", "application/json");
 
     if (username && password) {
-      const PORT = process.env.REACT_APP_BE_PORT || 8000
+      const PORT = process.env.BE_PORT || 8000
 
       await fetch(`http://localhost:${PORT}/user/register/`, {
         headers,

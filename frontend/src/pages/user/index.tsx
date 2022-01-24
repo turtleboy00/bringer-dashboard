@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./container/Login";
 import Register from "./container/Register";
-import Tracking from "../delivery/containers/Tracking";
 import Update from "./container/Update";
 import Profile from "./container/Profile";
 import Logout from "./container/Logout";
