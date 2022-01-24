@@ -11,12 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path, PurePath
-from dotenv import load_dotenv
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(str(PurePath.joinpath(BASE_DIR, 'backend.env')))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -139,7 +136,7 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS  = [
-    f'http://localhost:{os.environ.get("FE_PORT", "8000")}',
-    f'http://127.0.0.1:{os.environ.get("FE_PORT", "8000")}',
+    f'http://localhost:{os.environ.get("FE_PORT", "3000")}',
+    f'http://127.0.0.1:{os.environ.get("FE_PORT", "3000")}',
 ]
 # CORS_ALLOW_ALL_ORIGINS = True

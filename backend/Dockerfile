@@ -4,7 +4,6 @@ WORKDIR /usr/src/bringer
 EXPOSE 8000
 
 COPY . .
-RUN mv example.env backend.env
 RUN pip install -r requirements.txt
 RUN python ./manage.py migrate delivery
 RUN python ./manage.py makemigrations
