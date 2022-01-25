@@ -21,7 +21,7 @@ services:
    depends_on:
      - backend
    environment:
-           BE_PORT: 9030
+           REACT_APP_BE_PORT: 9030
   
 networks:
   backend:
