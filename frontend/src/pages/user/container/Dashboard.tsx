@@ -3,74 +3,72 @@ import Select from "react-select";
 import Table from "react-bootstrap/Table";
 
 const Dashboard = () => {
-  let [packages, setPackages] = useState([]);
-  let [selected, setSelected] = useState(null);
+    let [packages, setPackages] = useState([]);
+    let [selected, setSelected] = useState(null);
 
-  useEffect(() => {
-    document.title = "UPS: Dashboard";
+    useEffect(() => {
+        document.title = "UPS: Dashboard";
 
-    const getPackages = async () => {
-      const PORT = process.env.BE_PORT || 8000;
+        const getPackages = async () => {
+            const PORT = process.env.REACT_APP_BE_PORT || 8000;
 
-      await fetch(`http://localhost:${PORT}/delivery/`)
-        .then((res) => {
-          if (res.status >= 400 && res.status < 600) {
-            throw Error(res.statusText);
-          }
+            await fetch(`http://localhost:${PORT}/delivery/`)
+                .then((res) => {
+                    if (res.status >= 400 && res.status < 600) {
+                        throw Error(res.statusText);
+                    }
 
-          return res.json();
-        })
-        .then((message) => {
-          setPackages(message["deliveries"]);
-        })
-        .catch((err) => console.warn(err));
+                    return res.json();
+                })
+                .then((message) => {
+                    setPackages(message["deliveries"]);
+                })
+                .catch((err) => console.warn(err));
+        };
+
+        getPackages();
+    }, []);
+
+    const options = [
+        { value: "create", label: "Create a label" },
+        { value: "track", label: "Add tracking number" },
+    ];
+
+    const handleSelect = (selected) => {
+        setSelected(selected);
     };
 
-    getPackages();
-  }, []);
-
-  const options = [
-    { value: "create", label: "Create a label" },
-    { value: "track", label: "Add tracking number" },
-  ];
-
-  const handleSelect = (selected) => {
-    setSelected(selected);
-  };
-
-  return (
-    <>
-      <h1>Dashboard</h1>
-      <Select
-        value={selected}
-        onChange={handleSelect}
-				options={options}
-				className="mb-4"
-      />
-      <Table striped bordered hover >
-        <thead>
-          <tr>
-						<th>Carrier</th>
-            <th>Tracking Number</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-				<tbody>
-					{
-						packages.map((item, index) => {
-							return (
-								<tr key={index}>
-									<td>UPS</td>
-									<td>{ item.tracking_number }</td>
-									<td> ${ item.price } </td>
-								</tr>
-							)
-						})
-					}
-        </tbody>
-      </Table>
-    </>
-  );
+    return (
+        <>
+            <h1>Dashboard</h1>
+            <Select
+                value={selected}
+                onChange={handleSelect}
+                options={options}
+                className="mb-4"
+            />
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Carrier</th>
+                        <th>Tracking Number</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {packages.map((item, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>UPS</td>
+                                <td>{item.tracking_number}</td>
+                                <td> ${item.price} </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </Table>
+        </>
+    );
 };
 
 export default Dashboard;

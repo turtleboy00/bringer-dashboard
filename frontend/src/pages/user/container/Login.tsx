@@ -4,22 +4,21 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { toast, ToastContainer } from "react-toastify";
 
-
 const Login = () => {
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
-    const PORT = process.env.BE_PORT || 8000
+    const PORT = process.env.REACT_APP_BE_PORT || 8000;
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem("token");
 
         if (token) {
-            navigate('/user/profile', {replace: true})
+            navigate("/user/profile", { replace: true });
         }
-        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleLogin = async (event) => {
@@ -29,29 +28,28 @@ const Login = () => {
         const password = passwordRef.current?.value;
 
         if (username && password) {
-
             await fetch(`http://localhost:${PORT}/user/token/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ username, password, email:'' })
+                body: JSON.stringify({ username, password, email: "" }),
             })
-                .then(res => {
+                .then((res) => {
                     if (res.status >= 400 && res.status < 600) {
-                        throw Error(res.statusText)
+                        throw Error(res.statusText);
                     }
 
-                    return res.json()
+                    return res.json();
                 })
-                .then(message => {
-                    localStorage.setItem('token', JSON.stringify(message))
-                    toast('Redirecting to user profile')
-                    setTimeout(() => navigate('/user/profile'), 2000)
+                .then((message) => {
+                    localStorage.setItem("token", JSON.stringify(message));
+                    toast("Redirecting to user profile");
+                    setTimeout(() => navigate("/user/profile"), 2000);
                 })
                 .catch((err) => {
                     console.log(err);
-                    toast('Wrong credentials')
+                    toast("Wrong credentials");
                 });
         }
     };
